@@ -3,6 +3,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
@@ -10,9 +11,9 @@
 
 <style>
 
-/* =================================
+/* =====================================
    NEXORA DESIGN
-================================= */
+===================================== */
 
 :root{
 
@@ -35,7 +36,7 @@
             148,
             163,
             184,
-            0.15
+            .15
         );
 
 }
@@ -44,18 +45,15 @@
     box-sizing:border-box;
 }
 
-html{
-    color-scheme:dark;
-}
-
 body{
 
     margin:0;
 
     min-height:100vh;
 
-    font-family:'Segoe UI',
-                sans-serif;
+    font-family:
+        "Segoe UI",
+        sans-serif;
 
     background:#0f172a;
 
@@ -66,24 +64,26 @@ body{
                 14,
                 165,
                 233,
-                0.09
+                .09
             ),
             transparent 55%
         );
 
     color:var(--text);
 
+    padding:30px;
+
 }
 
-/* ========================
-   CONTAINER
-======================== */
+/* =====================================
+   EDITOR CONTAINER
+===================================== */
 
 .editor{
 
     max-width:1000px;
 
-    margin:40px auto;
+    margin:auto;
 
     padding:30px;
 
@@ -94,7 +94,7 @@ body{
             17,
             30,
             53,
-            0.95
+            .95
         );
 
     border:
@@ -115,21 +115,16 @@ h1{
 
 }
 
-h2{
-
-    color:var(--accent);
-
-}
-
+h2,
 h3{
 
     color:var(--accent);
 
 }
 
-/* ========================
+/* =====================================
    INPUTS
-======================== */
+===================================== */
 
 label{
 
@@ -137,7 +132,7 @@ label{
 
     margin-top:18px;
 
-    margin-bottom:5px;
+    margin-bottom:8px;
 
     color:var(--muted);
 
@@ -176,13 +171,20 @@ textarea:focus{
             56,
             189,
             248,
-            0.8
+            .7
         );
 
 }
-    /* ========================
+
+textarea{
+
+    resize:vertical;
+
+}
+
+/* =====================================
    ANTWORTEN
-======================== */
+===================================== */
 
 .answer-row{
 
@@ -191,31 +193,45 @@ textarea:focus{
     grid-template-columns:
         40px 1fr;
 
-    align-items:center;
-
     gap:12px;
 
-    margin-bottom:15px;
+    align-items:center;
+
+    margin-bottom:14px;
 
 }
 
-.answer-row input[type="radio"]{
+.answer-row
+input[type="radio"]{
 
-    transform:scale(1.5);
+    transform:
+        scale(1.5);
 
     cursor:pointer;
 
 }
 
-.answer-row input[type="text"]{
+.answer-row
+input[type="text"]{
 
     height:60px;
 
 }
-
-/* ========================
+/* =====================================
    BUTTONS
-======================== */
+===================================== */
+
+.button-row{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
 
 button{
 
@@ -278,13 +294,45 @@ button:hover{
 
 }
 
+/* =====================================
+   VORSCHAU
+===================================== */
+
+.preview-item{
+
+    margin-top:15px;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    background:
+        rgba(
+            17,
+            30,
+            53,
+            .95
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+}
+
+.preview-buttons{
+
+    margin-top:15px;
+
+}
+
 .edit-btn{
 
     background:#f59e0b;
 
     color:white;
 
-    margin-right:10px;
+    margin-right:8px;
 
 }
 
@@ -296,41 +344,15 @@ button:hover{
 
 }
 
-/* ========================
-   VORSCHAU
-======================== */
-
-.preview-item{
-
-    margin-top:15px;
-
-    padding:15px;
-
-    border-radius:12px;
-
-    background:
-        rgba(
-            17,
-            30,
-            53,
-            0.95
-        );
-
-    border:
-        1px solid
-        var(--border);
-
-}
-
-/* ========================
+/* =====================================
    MOBILE
-======================== */
+===================================== */
 
 @media(max-width:700px){
 
     .editor{
 
-        margin:15px;
+        margin:10px;
 
         padding:20px;
 
@@ -338,14 +360,13 @@ button:hover{
 
     h1{
 
-        font-size:2.3rem;
+        font-size:2.2rem;
 
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -354,43 +375,29 @@ button:hover{
 
 <h1>Nexora Quiz Editor</h1>
 
-<h2>Quiz-Frage erstellen</h2>
+<h2>Quizfrage erstellen</h2>
 
-<label>
-Frage:
-</label>
+<label>Frage</label>
 
 <input
     id="questionInput"
     type="text"
-    placeholder=
-    "Frage eingeben"
+    placeholder="Frage eingeben"
 >
 
 <label>
-Antwortmöglichkeiten:
+Antwortmöglichkeiten
 </label>
 
 <div id="answers">
 
 </div>
 
+<div class="button-row">
+
 <button id="addAnswerBtn">
 Antwort hinzufügen
 </button>
-
-<label>
-Erklärung:
-</label>
-
-<textarea
-    id="explanationInput"
-    rows="3"
-    placeholder=
-    "Erklärung eingeben"
-></textarea>
-
-<br><br>
 
 <button id="saveQuestionBtn">
 Frage speichern
@@ -399,6 +406,18 @@ Frage speichern
 <button id="newQuestionBtn">
 Neue Frage
 </button>
+
+</div>
+
+<label>
+Erklärung
+</label>
+
+<textarea
+    id="explanationInput"
+    rows="4"
+    placeholder="Optionale Erklärung"
+></textarea>
 
 <h3>
 Gespeicherte Fragen
@@ -410,7 +429,7 @@ Gespeicherte Fragen
 
 <button id="exportBtn">
 
-Quiz als HTML erzeugen
+Quiz als HTML exportieren
 
 </button>
 
@@ -422,14 +441,14 @@ let quiz = [];
 
 let editIndex = null;
 
-function addAnswerField(
-    text,
-    checked
-){
+/* ======================
+   ANTWORTFELD
+====================== */
 
-    if(!text){
-        text = '';
-    }
+function addAnswerField(
+    text='',
+    checked=false
+){
 
     const div =
         document.createElement(
@@ -438,58 +457,91 @@ function addAnswerField(
 
     div.className =
         'answer-row';
+
     div.innerHTML =
 
-        '<input type="radio" name="correct" ' +
+        '<input type="radio" ' +
+        'name="correct" ' +
         (checked ? 'checked' : '') +
         '>' +
 
         '<input type="text" ' +
-        'placeholder="Antworttext" ' +
-        'value="' +
-        text.replace(/"/g,'&quot;') +
+        'placeholder="Antwort"' +
+        ' value="' +
+        text.replace(
+            /"/g,
+            '&quot;'
+        ) +
         '">';
 
     document
-        .getElementById(
-            'answers'
-        )
-        .appendChild(div);
+    .getElementById(
+        'answers'
+    )
+    .appendChild(div);
 
 }
+
+/* ======================
+   SOFORT 3 FELDER
+====================== */
+
+addAnswerField();
+addAnswerField();
+addAnswerField();
+/* ======================
+   ANTWORT HINZUFÜGEN
+====================== */
 
 document
 .getElementById(
     'addAnswerBtn'
-).onclick = function(){
+)
+.onclick = function(){
 
-    addAnswerField(
-        '',
-        false
-    );
+    addAnswerField();
 
 };
 
-addAnswerField('',false);
-addAnswerField('',false);
+/* ======================
+   FORMULAR ZURÜCKSETZEN
+====================== */
 
-/* =========================
-   NEUE FRAGE
-========================= */
+function resetForm(){
 
-document
-.getElementById(
-    'newQuestionBtn'
-).onclick = resetForm;
+    document
+    .getElementById(
+        'questionInput'
+    )
+    .value = '';
 
-/* =========================
+    document
+    .getElementById(
+        'explanationInput'
+    )
+    .value = '';
+
+    document
+    .getElementById(
+        'answers'
+    )
+    .innerHTML = '';
+
+    addAnswerField();
+    addAnswerField();
+    addAnswerField();
+
+}
+
+/* ======================
    FRAGE SPEICHERN
-========================= */
+====================== */
 
 document
 .getElementById(
     'saveQuestionBtn'
-).onclick = function(){
+)
+.onclick = function(){
 
     const question =
         document
@@ -515,9 +567,11 @@ document
 
     let options = [];
 
-    let correctIndex = -1;
+    let correct = -1;
 
-    rows.forEach(function(row){
+    rows.forEach(function(
+        row
+    ){
 
         const text =
             row.querySelector(
@@ -537,12 +591,14 @@ document
                 radio.checked
             ){
 
-                correctIndex =
+                correct =
                     options.length;
 
             }
 
-            options.push(text);
+            options.push(
+                text
+            );
 
         }
 
@@ -551,18 +607,18 @@ document
     if(
         !question ||
         options.length < 2 ||
-        correctIndex === -1
+        correct === -1
     ){
 
         alert(
-            'Bitte eine Frage, mindestens zwei Antworten und eine richtige Antwort angeben.'
+            'Bitte mindestens 2 Antworten und eine richtige Antwort auswählen.'
         );
 
         return;
 
     }
 
-    const newQuestion = {
+    const obj = {
 
         question:
             question,
@@ -571,18 +627,20 @@ document
             options,
 
         correct:
-            correctIndex,
+            correct,
 
         explanation:
             explanation
 
     };
 
-    if(editIndex !== null){
+    if(
+        editIndex !== null
+    ){
 
         quiz[
             editIndex
-        ] = newQuestion;
+        ] = obj;
 
         editIndex = null;
 
@@ -590,7 +648,7 @@ document
     else{
 
         quiz.push(
-            newQuestion
+            obj
         );
 
     }
@@ -601,16 +659,143 @@ document
 
 };
 
-/* =========================
+/* ======================
+   VORSCHAU
+====================== */
+
+function renderPreview(){
+
+    const preview =
+        document
+        .getElementById(
+            'previewList'
+        );
+
+    preview.innerHTML = '';
+
+    quiz.forEach(
+        function(q,i){
+
+            const div =
+                document
+                .createElement(
+                    'div'
+                );
+
+            div.className =
+                'preview-item';
+
+            div.innerHTML =
+
+                '<b>' +
+                q.question +
+                '</b><br><br>' +
+
+                'Richtige Antwort: <b>' +
+                q.options[
+                    q.correct
+                ] +
+                '</b><br><br>' +
+
+                '<div class="preview-buttons">' +
+
+                '<button class="edit-btn" onclick="editQuestion(' +
+                i +
+                ')">Bearbeiten</button>' +
+
+                '<button class="delete-btn" onclick="deleteQuestion(' +
+                i +
+                ')">Löschen</button>' +
+
+                '</div>';
+
+            preview.appendChild(
+                div
+            );
+
+    });
+
+}
+
+/* ======================
+   BEARBEITEN
+====================== */
+
+function editQuestion(i){
+
+    const q =
+        quiz[i];
+
+    editIndex = i;
+
+    document
+    .getElementById(
+        'questionInput'
+    )
+    .value =
+        q.question;
+
+    document
+    .getElementById(
+        'explanationInput'
+    )
+    .value =
+        q.explanation;
+
+    const answers =
+        document
+        .getElementById(
+            'answers'
+        );
+
+    answers.innerHTML = '';
+
+    q.options.forEach(
+        function(
+            answer,
+            index
+        ){
+
+            addAnswerField(
+
+                answer,
+
+                index ===
+                q.correct
+
+            );
+
+    });
+
+}
+
+/* ======================
+   LÖSCHEN
+====================== */
+
+function deleteQuestion(i){
+
+    quiz.splice(
+        i,
+        1
+    );
+
+    renderPreview();
+
+}
+
+/* ======================
    EXPORT
-========================= */
+====================== */
 
 document
 .getElementById(
     'exportBtn'
-).onclick = function(){
+)
+.onclick = function(){
 
     const html =
+
 `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -628,15 +813,24 @@ ${JSON.stringify(
     2
 )};
 
+alert(
+'Quiz erfolgreich exportiert.\\n\\n' +
+'Hier kommt später das komplette Nexora Quiz Template hinein.'
+);
 
+</script>
+
+</body>
+</html>`;
 
     const blob =
         new Blob(
-        [html],
-        {
-            type:
-            'text/html'
-        });
+            [html],
+            {
+                type:
+                'text/html'
+            }
+        );
 
     const url =
         URL.createObjectURL(
@@ -657,128 +851,6 @@ ${JSON.stringify(
     a.click();
 
 };
-
-/* =========================
-   VORSCHAU
-========================= */
-
-function renderPreview(){
-
-    const preview =
-        document
-        .getElementById(
-            'previewList'
-        );
-
-    preview.innerHTML = '';
-
-    quiz.forEach(
-        function(q,i){
-
-        const div =
-            document
-            .createElement(
-                'div'
-            );
-
-        div.className =
-            'preview-item';
-
-        div.innerHTML =
-
-            '<b>' +
-            q.question +
-            '</b><br><br>' +
-
-            'Antworten:<br>' +
-
-            q.options.join(
-                '<br>'
-            ) +
-
-            '<br><br>' +
-
-            '<b>Richtige Antwort:</b><br>' +
-
-            q.options[
-                q.correct
-            ] +
-
-            '<br><br>' +
-
-            '<button class="edit-btn" onclick="editQuestion('+
-            i+
-            ')">Bearbeiten</button>'+
-
-            '<button class="delete-btn" onclick="deleteQuestion('+
-            i+
-            ')">Löschen</button>';
-
-        preview.appendChild(
-            div
-        );
-
-    });
-
-}
-
-function editQuestion(i){
-
-    const q =
-        quiz[i];
-
-    editIndex = i;
-
-    document
-    .getElementById(
-        'questionInput'
-    ).value =
-        q.question;
-
-    document
-    .getElementById(
-        'explanationInput'
-    ).value =
-        q.explanation;
-
-}
-
-function deleteQuestion(i){
-
-    quiz.splice(i,1);
-
-    renderPreview();
-
-}
-
-function resetForm(){
-
-    document
-    .getElementById(
-        'questionInput'
-    ).value = '';
-
-    document
-    .getElementById(
-        'explanationInput'
-    ).value = '';
-
-    document
-    .getElementById(
-        'answers'
-    ).innerHTML = '';
-
-    addAnswerField(
-        '',
-        false
-    );
-
-    addAnswerField(
-        '',
-        false
-    );
-
-}
 
 </script>
 
